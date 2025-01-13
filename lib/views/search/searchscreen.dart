@@ -5,6 +5,24 @@ class Searchscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              onChanged: (value) {},
+              decoration: const InputDecoration(
+                hintText: 'Search',
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
