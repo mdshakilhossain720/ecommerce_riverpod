@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final slider = StateProvider<double>((ref) {
-  return 0;
-});
+import 'provider.dart';
+
+
 
 class SliderScreen extends ConsumerWidget {
   const SliderScreen({super.key});
@@ -21,15 +21,18 @@ class SliderScreen extends ConsumerWidget {
             return Container(
               height: 200,
               width: 200,
-              color: Colors.red.withOpacity(sliders),
+              color: Colors.red.withOpacity(sliders.slider),
             );
           }),
           Consumer(builder: (context, ref, child) {
             final sliders = ref.watch(slider);
             return Slider(
-                value: sliders,
+                value: sliders.slider,
                 onChanged: (value) {
-                  ref.read(slider.notifier).state = value;
+                  final sliders = ref.read(slider.notifier);
+                  sliders.state = sliders.state.copyWith(slider: value);
+
+                 
                 });
           }),
         ],
